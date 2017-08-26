@@ -5,7 +5,7 @@
             <span class="pull-right">
                 <h4>
                     Document Number: 
-                    <b class="text-danger">{{$record->document_number}}</b> 
+                    <b class="text-danger" id="document-number">{{$record->document_number}}</b> 
                     <a href="javascript:void(0)" id="action-edit-document-number">
                         <i class="fa fa-pencil"></i>
                     </a>

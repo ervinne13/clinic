@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/', 'HomeController@index');
     
+    Route::get('/child-health-records/datatable', 'ChildHealthRecordController@datatable');
     Route::resource('/child-health-records', 'ChildHealthRecordController');
     
 });

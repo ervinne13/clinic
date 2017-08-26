@@ -26,8 +26,8 @@
         <div class="panel panel-default b-a-0 p-10 shadow-box">
 
             @include('module.datatable', [
-            "id" => "transfer-orders-datatable",
-            "columns" => ["", "Doc No", "Doc Date", "Status", "From Location", "To Location"]
+            "id" => "chr-datatable",
+            "columns" => ["", "Doc No", "Last Name", "First Name", "Middle Name", "Gender", "Birth Date"]
             ])
 
         </div>

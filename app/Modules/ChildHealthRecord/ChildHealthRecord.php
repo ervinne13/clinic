@@ -8,10 +8,11 @@ class ChildHealthRecord extends Model
 {
 
     const NUMBER_SERIES_CODE = "CHR";
-    
+
     public $incrementing  = false;
     protected $table      = "child_health_record";
     protected $primaryKey = "document_number";
+//    protected $dates      = ['document_date', 'birth_date'];
     protected $fillable   = [
         "document_number",
         "document_date",

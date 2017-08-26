@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Modules\ChildHealthRecord\Repository\ChildHealthRecordRepository;
+use App\Modules\ChildHealthRecord\Repository\Impl\ChildHealthRecordRepositoryDefaultImpl;
 use App\Modules\System\NumberSeries\Repository\NumberSeriesRepository;
 use App\Modules\System\NumberSeries\Repository\NumberSeriesRepositoryDefaultImpl;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +26,11 @@ class RepositoryProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(NumberSeriesRepository::class, NumberSeriesRepositoryDefaultImpl::class);
+
+        $this->app->bind(ChildHealthRecordRepository::class, function() {
+            $NSRepo = new NumberSeriesRepositoryDefaultImpl();
+            return new ChildHealthRecordRepositoryDefaultImpl($NSRepo);
+        });
     }
 
     /**
@@ -34,7 +41,8 @@ class RepositoryProvider extends ServiceProvider
     public function provides()
     {
         return [
-            NumberSeriesRepository::class
+            NumberSeriesRepository::class,
+            ChildHealthRecordRepository::class,
         ];
     }
 

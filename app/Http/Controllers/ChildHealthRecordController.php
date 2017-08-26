@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Modules\ChildHealthRecord\ChildHealthRecord;
+use App\Modules\ChildHealthRecord\Repository\ChildHealthRecordRepository;
 use App\Modules\Clinic\Vaccine\Vaccine;
 use App\Modules\System\NumberSeries\Repository\NumberSeriesRepository;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Yajra\Datatables\Datatables;
+use function response;
 use function view;
 
 class ChildHealthRecordController extends Controller
@@ -24,7 +28,7 @@ class ChildHealthRecordController extends Controller
 
     public function datatable()
     {
-        
+        return Datatables::of(ChildHealthRecord::query())->make(true);
     }
 
     /**
@@ -36,7 +40,8 @@ class ChildHealthRecordController extends Controller
     {
         $viewData = $this->getFormViewData();
 
-        $viewData["record"] = new ChildHealthRecord();
+        $viewData["routeAction"] = "create";    //  TODO: automate later
+        $viewData["record"]      = new ChildHealthRecord();
 
         $viewData["record"]->document_number = $NSRepo->getNextAvailableNumber(ChildHealthRecord::NUMBER_SERIES_CODE);
 
@@ -49,9 +54,13 @@ class ChildHealthRecordController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ChildHealthRecordRepository $chrRepo)
     {
-        
+        try {
+            return $chrRepo->saveFromRequest(new ChildHealthRecord(), $request);
+        } catch ( Exception $ex ) {
+            return response($ex->getMessage(), 500);
+        }
     }
 
     /**
