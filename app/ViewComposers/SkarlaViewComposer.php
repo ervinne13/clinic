@@ -2,6 +2,7 @@
 
 namespace App\ViewComposers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 /**
@@ -26,6 +27,21 @@ class SkarlaViewComposer
             ], $view->getData());
 
         $view->with($with);
+
+        $view->with('routeActionName', $this->getActionName());
+    }
+
+    protected function getActionName()
+    {
+        $splittedAction = explode('@', Route::getCurrentRoute()->getActionName());
+
+        if ( count($splittedAction) > 1 ) {
+            $routeAction = $splittedAction[1];
+        } else {
+            $routeAction = "index";
+        }
+
+        return $routeAction;
     }
 
 }

@@ -1,5 +1,5 @@
 
-/* global form_utilities, routeAction */
+/* global form_utilities, routeAction, swal */
 
 (function () {
 
@@ -37,6 +37,7 @@
         });
 
         $('#action-save-profile').click(saveCHR);
+        $('#action-edit-document-number').click(askNewNumberSeries);
     }
 
     function showVaccineDate(trigger) {
@@ -51,6 +52,27 @@
         } else {
             $container.css('display', 'none');
         }
+    }
+
+    function askNewNumberSeries() {
+
+        swal({
+            title: "Number Series!",
+            text: "Edit Number Series:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "17-xxxx"
+        }, function (newNumberSeries) {
+            if (newNumberSeries === false) {
+                return false;
+            }
+
+            $('#document-number').text(newNumberSeries);
+            swal("Success!", "Number series updated to: " + newNumberSeries, "success");
+        });
+
     }
 
     function saveCHR() {

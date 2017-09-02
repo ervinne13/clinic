@@ -66,19 +66,26 @@
                         <span class="nav-label">Users</span>   
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{url("/number-series")}}" title="Number Series">
+                        <i class="fa fa-users fa-lg fa-fw"></i>
+                        <span class="nav-label">Number Series</span>   
+                    </a>
+                </li>
                 @endif
-                <li>
-                    <a href="{{url("/vaccines")}}" title="List of Vaccines">
-                        <i class="fa fa-flask fa-lg fa-fw"></i>
-                        <span class="nav-label">Vaccines (Generic)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url("/vaccines")}}" title="List of Vaccine Prices">
-                        <i class="fa fa-dollar fa-lg fa-fw"></i>
-                        <span class="nav-label">Vaccine Prices</span>
-                    </a>
-                </li>
+                <!--                <li>
+                                    <a href="{{url("/vaccines")}}" title="List of Vaccines">
+                                        <i class="fa fa-flask fa-lg fa-fw"></i>
+                                        <span class="nav-label">Vaccines (Generic)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url("/vaccines")}}" title="List of Vaccine Prices">
+                                        <i class="fa fa-dollar fa-lg fa-fw"></i>
+                                        <span class="nav-label">Vaccine Prices</span>
+                                    </a>
+                                </li>-->
 
             </ul>
 

@@ -15,8 +15,8 @@ class NumberSeries extends Model
         "year_prefix_format",
         "uses_code_as_prefix",
         "starting_number",
-        "ending_number"
-        //  last_number_used should not be fillable
+        "ending_number",
+        "last_number_used"
     ];
 
     public function scopeCode($query, $code)

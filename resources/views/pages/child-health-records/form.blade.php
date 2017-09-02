@@ -28,7 +28,7 @@ $panels = "pages.child-health-records.partials.panels"
             @include("{$panels}.birth-history")            
         </div>
 
-        @include("{$panels}.immunization-record")        
+        <!-- @include("{$panels}.immunization-record") -->
 
         <div class="clearfix"></div>
         <div class="pull-right m-b-3">
